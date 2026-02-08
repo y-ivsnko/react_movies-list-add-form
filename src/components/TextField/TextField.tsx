@@ -6,6 +6,7 @@ type Props = {
   value: string;
   label?: string;
   placeholder?: string;
+  urlValid?: boolean;
   required?: boolean;
   onChange?: (newValue: string) => void;
 };
@@ -20,6 +21,7 @@ export const TextField: React.FC<Props> = ({
   label = name,
   placeholder = `Enter ${label}`,
   required = false,
+  urlValid,
   onChange = () => {},
 }) => {
   // generate a unique id once on component load
@@ -51,6 +53,9 @@ export const TextField: React.FC<Props> = ({
       </div>
 
       {hasError && <p className="help is-danger">{`${label} is required`}</p>}
+      {!hasError && urlValid && touched && (
+        <p className="help is-danger">The URL is not correct</p>
+      )}
     </div>
   );
 };
