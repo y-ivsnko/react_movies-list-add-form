@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { TextField } from '../TextField';
-import { title } from 'process';
 import { Movie } from '../../types/Movie';
 
 type Props = {
@@ -62,7 +61,7 @@ export const NewMovie: React.FC<Props> = ({ onAdd }) => {
       imdbId: '',
     });
 
-    setCount(+1);
+    setCount(prev => prev + 1);
   };
 
   return (
@@ -89,7 +88,7 @@ export const NewMovie: React.FC<Props> = ({ onAdd }) => {
         label="Image URL"
         value={addNewMovie.imgUrl}
         onChange={value => handleChange('imgUrl', value)}
-        urlValid={imgUrlInvalid}
+        urlInvalid={imgUrlInvalid}
         required
       />
 
@@ -98,7 +97,7 @@ export const NewMovie: React.FC<Props> = ({ onAdd }) => {
         label="Imdb URL"
         value={addNewMovie.imdbUrl}
         onChange={value => handleChange('imdbUrl', value)}
-        urlValid={imbdUrlInvalid}
+        urlInvalid={imbdUrlInvalid}
         required
       />
 
